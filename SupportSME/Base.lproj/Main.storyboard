@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2aW-4d-MYy">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SupportSME" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SupportSME" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,10 +211,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="1bo-kM-Ia0"/>
                     <connections>
-                        <outlet property="emailLabel" destination="JRQ-8U-2V0" id="uGQ-7V-cJk"/>
                         <outlet property="emailTextField" destination="09h-qe-uRK" id="qVd-e2-NcA"/>
+                        <outlet property="emptyEmailMsgLabel" destination="JRQ-8U-2V0" id="uGQ-7V-cJk"/>
+                        <outlet property="emptyPasswordMsgLabel" destination="Po2-s8-xO3" id="qHv-yz-9Wy"/>
                         <outlet property="loginButton" destination="LN1-4X-scv" id="8Bi-82-Egu"/>
-                        <outlet property="passwordLabel" destination="Po2-s8-xO3" id="qHv-yz-9Wy"/>
                         <outlet property="passwordTextField" destination="PnK-i9-GHO" id="0a8-iJ-2Tf"/>
                     </connections>
                 </viewController>
