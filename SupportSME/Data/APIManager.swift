@@ -9,62 +9,42 @@
 import Foundation
 import UIKit
 
+//MARK: Protocol for data pass
+protocol APIDelegateManager: AnyObject {
+    func didReceive(userFirstName: String)
+}
+
 class APIManager {
     
     static let sharedInstance = APIManager()
+    weak var delegate: APIDelegateManager?
+    var firstName: String =  ""
     
     func loginAPICall(email: String, password: String) {
         
         let urlString = URL(string: Constant.Endpoint.URLString)
         var request = URLRequest(url: urlString!)
         request.setValue(Constant.HTTPConstants.jsonApplication, forHTTPHeaderField: Constant.HTTPConstants.headerField)
-        request.httpMethod = "POST"
-        let parameters: [String: Any] = [
+        request.httpMethod = Constant.HTTPConstants.method
+        let parameterDictionary: [String: Any] = [
             "email": email,
             "password": password
         ]
-        request.httpBody = parameters.percentEncoded()
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else { return }
+        request.httpBody = httpBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse,
-                error == nil else {                                              // check for fundamental networking error
-                    print("error", error ?? "Unknown error")
-                    return
+            print(response as Any)
+            do {
+                if error == nil {
+                    let data = try JSONDecoder().decode(DataModel.self, from: data!)
+                    self.firstName = data.result.personalDetails.firstName
+                    self.delegate?.didReceive(userFirstName: self.firstName)
+                }
+            } catch {
+                print(error.localizedDescription)
             }
-            print(response)
-            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
-                print("statusCode should be 2xx, but is \(response.statusCode)")
-                print("response = \(response)")
-                return
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString ?? "No response")")
         }
-        
         task.resume()
     }
-}
-
-extension Dictionary {
-    func percentEncoded() -> Data? {
-        return map { key, value in
-            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-            return escapedKey + "=" + escapedValue
-        }
-        .joined(separator: "&")
-        .data(using: .utf8)
-    }
-}
-
-extension CharacterSet {
-    static let urlQueryValueAllowed: CharacterSet = {
-        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-        let subDelimitersToEncode = "!$&'()*+,;="
-        
-        var allowed = CharacterSet.urlQueryAllowed
-        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-        return allowed
-    }()
 }

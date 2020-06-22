@@ -41,9 +41,9 @@ class LoginViewController: UIViewController {
         emptyEmailMsgLabel.isHidden = true
         emptyPasswordMsgLabel.isHidden = true
         APIManager.sharedInstance.loginAPICall(email: emailTextField.text!, password: passwordTextField.text!)
+        APIManager.sharedInstance.delegate = self
         let detailVC = (self.storyboard?.instantiateViewController(identifier: Constant.storyboardConstant.storyboardIdentifier))! as DetailsViewController
         self.navigationController?.pushViewController(detailVC, animated: true)
-        
     }
     
     //MARK: Display alert for empty credentials
@@ -65,5 +65,9 @@ class LoginViewController: UIViewController {
         }
     }
 }
-
-
+//MARK: Extension for data pass
+extension LoginViewController: APIDelegateManager {
+    func didReceive(userFirstName: String) {
+        print("Welcome with \(userFirstName) from response.")
+    }
+}

@@ -18,6 +18,7 @@
 		4558BC022497452B00CAAD6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4558BC002497452B00CAAD6A /* LaunchScreen.storyboard */; };
 		4558BC0D2497452B00CAAD6A /* SupportSMETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558BC0C2497452B00CAAD6A /* SupportSMETests.swift */; };
 		4558BC182497452B00CAAD6A /* SupportSMEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558BC172497452B00CAAD6A /* SupportSMEUITests.swift */; };
+		456EE37F249D15B700C0B254 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EE37E249D15B700C0B254 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4558BC132497452B00CAAD6A /* SupportSMEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SupportSMEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4558BC172497452B00CAAD6A /* SupportSMEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportSMEUITests.swift; sourceTree = "<group>"; };
 		4558BC192497452B00CAAD6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456EE37E249D15B700C0B254 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				452908E8249BDBD000632B43 /* Constant */,
+				456EE37D249D159500C0B254 /* Model */,
 				452908F2249BE2E000632B43 /* Data */,
 				452908EE249BDF5600632B43 /* Controller */,
 				4558BBF52497452600CAAD6A /* AppDelegate.swift */,
@@ -159,6 +162,15 @@
 				4558BC192497452B00CAAD6A /* Info.plist */,
 			);
 			path = SupportSMEUITests;
+			sourceTree = "<group>";
+		};
+		456EE37D249D159500C0B254 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				456EE37E249D15B700C0B254 /* Model.swift */,
+			);
+			name = Model;
+			path = "New Group2/Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456EE37F249D15B700C0B254 /* Model.swift in Sources */,
 				4558BBFA2497452600CAAD6A /* LoginViewController.swift in Sources */,
 				4558BBF62497452600CAAD6A /* AppDelegate.swift in Sources */,
 				452908EA249BDBF200632B43 /* Constant.swift in Sources */,
